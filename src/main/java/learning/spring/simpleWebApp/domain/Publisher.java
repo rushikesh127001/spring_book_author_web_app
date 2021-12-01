@@ -1,9 +1,10 @@
-package learning.spring.simpleWebApp.repository;
+package learning.spring.simpleWebApp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.*;
+import java.util.HashSet;
 
 @Entity
 public class Publisher {
@@ -17,6 +18,10 @@ public class Publisher {
     private String zip;
     private String city;
     private String state;
+
+    @OneToMany
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books= new HashSet<>();
 
     public Publisher() {
     }
